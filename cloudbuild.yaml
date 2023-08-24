@@ -1,0 +1,19 @@
+steps:
+- name: 'gcr.io/cloud-builders/gcloud'
+  entrypoint: 'bash'
+  args:
+  - '-c'
+  - |
+    echo "Content of substitutions.env:"
+    cat /workspace/substitutions.env
+    echo "Content of env.yaml:"
+    cat /workspace/env.yaml
+    source /workspace/substitutions.env
+    source /workspace/env.yaml
+    echo "Function Name: $_FUNCTION_NAME"
+    echo "Region: $_REGION"
+    gcloud functions deploy "$_FUNCTION_NAME" \
+      --region="$_REGION" \
+      --source=. \
+      --entry-point="$_ENTRY_POINT" \
+      --runtime="$_RUNTIME"

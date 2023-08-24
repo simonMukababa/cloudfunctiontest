@@ -1,0 +1,9 @@
+{
+  "name": "scheduler-alerts",
+  "author": "Sonny Nyaga",
+  "version": "1.0",
+  "dependencies": {
+    "@google-cloud/pubsub": "^0.18.0",
+    "node-fetch":"^2.6.0"
+  }
+}
